@@ -111,7 +111,7 @@ public class AddOldInterface {
                 OldMan oldMan=new OldMan("",account,name,gender,birthDate,telephoneNUmber);
 
                 try {
-                    if(!Check.ifAccountIsUsed(oldMan)){
+                    if(Check.ifAccountIsUsed(oldMan)){
                         JOptionPane.showMessageDialog(jf,"账户已存在"," 错误提示",JOptionPane.ERROR_MESSAGE);
                         return;
                     }

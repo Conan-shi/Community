@@ -53,7 +53,7 @@ public class Check {
 
     public static boolean ifAccountIsUsed(OldMan oldMan) throws IOException {
         boolean flag = false;
-        ArrayList<OldMan> oldMEN = ReadFile.readFile("oldMan");
+        ArrayList<OldMan> oldMEN = RWFileForOldMan.readFile();
         if (oldMEN.size() == 0) {
             return false;
         } else {

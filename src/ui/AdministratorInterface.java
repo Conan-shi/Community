@@ -107,6 +107,10 @@ public class AdministratorInterface {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    if(!checkHaveSteward()){
+                        JOptionPane.showMessageDialog(jf, "没有生活管家，无法设置服务对象", "错误", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
 
                     if(Check.checkIfIsFull()){
                         JOptionPane.showMessageDialog(jf, "无可设置服务对象的老人", "错误", JOptionPane.ERROR_MESSAGE);
@@ -237,6 +241,7 @@ public class AdministratorInterface {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+
                     int selectedRow = table.getSelectedRow();
                     if(selectedRow==-1){
                         JOptionPane.showMessageDialog(jf, "请选择用户", "错误", JOptionPane.ERROR_MESSAGE);
@@ -276,5 +281,17 @@ public class AdministratorInterface {
 //    public static void main(String[] args) throws Exception {
 //        new AdministratorInterface().init();
 //    }
+
+    public static boolean checkHaveSteward()throws IOException{
+        ArrayList<User> users = RWFileForUser.readFile();
+        boolean flag=false;
+
+        for (User user:users){
+            if (user.getAuthority().equals("生活管家")){
+                flag=true;
+            }
+        }
+        return flag;
+    }
 
 }

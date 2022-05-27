@@ -30,6 +30,7 @@ public class UpdateAuthorityInterface {
         User user = users.get(selectedRow);
         if(user.getAuthority().equals("管理员")){
             JOptionPane.showMessageDialog(jf,"管理员不可修改","错误",JOptionPane.ERROR_MESSAGE);
+            new AdministratorInterface().init(adName);
             return;
 
         }
