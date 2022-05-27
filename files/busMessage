@@ -1,0 +1,7 @@
+{"passengers":["1982631","1097412"],"id":"1","routId":"001","routName":"zaz","direction":"上行","routType":"岛内班车","serveDate":"星期一","servePeriod":"上午","startTime":"13:00","ddl":"12:00","reservedNumber":"2","remark":""}
+{"passengers":["0126312","1097412","198236"],"id":"2","routId":"002","routName":"iac","direction":"上行","routType":"岛内班车","serveDate":"星期一","servePeriod":"上午","startTime":"13:00","ddl":"10:00","reservedNumber":"3","remark":""}
+{"passengers":[],"id":"3","routId":"003","routName":"skxas","direction":"上行","routType":"岛内班车","serveDate":"星期三","servePeriod":"上午","startTime":"21:58","ddl":"21:58","reservedNumber":"0","remark":""}
+{"passengers":["128642"],"id":"4","routId":"004","routName":"suix","direction":"上行","routType":"岛内班车","serveDate":"星期三","servePeriod":"上午","startTime":"22:30","ddl":"22:30","reservedNumber":"1","remark":""}
+{"passengers":[],"id":"5","routId":"99","routName":"qouxv","direction":"上行","routType":"岛内班车","serveDate":"星期一","servePeriod":"上午","startTime":"10:00","ddl":"未设置","reservedNumber":"0","remark":""}
+{"passengers":[],"id":"6","routId":"100","routName":"ouwx","direction":"上行","routType":"岛内班车","serveDate":"星期一","servePeriod":"下午","startTime":"17:00","ddl":"未设置","reservedNumber":"0","remark":""}
+{"passengers":[],"id":"7","routId":"33","routName":"qcqw","direction":"上行","routType":"岛内班车","serveDate":"星期一","servePeriod":"晚上","startTime":"19:00","ddl":"15:00","reservedNumber":"0","remark":""}
