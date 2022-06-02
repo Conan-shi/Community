@@ -1,11 +1,11 @@
-package ui;
+package views;
 
-import Actors.OldMan;
+import models.OldMan;
 import com.google.gson.Gson;
 import component.BackGroundPanel;
-import util.Check;
-import util.ReadFile;
-import util.ScreenUtils;
+import controllers.Check;
+import controllers.ReadFile;
+import controllers.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

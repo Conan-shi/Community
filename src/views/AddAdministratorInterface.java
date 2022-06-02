@@ -1,40 +1,36 @@
-package ui;
+package views;
 
-import Actors.Steward;
-import Actors.User;
+import models.User;
 import com.google.gson.Gson;
 import component.BackGroundPanel;
-import util.Check;
-import util.ReadFile;
-import util.ScreenUtils;
+import controllers.Check;
+import controllers.ReadFile;
+import controllers.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
-public class AddUserInterface {
-    JFrame jf = new JFrame("新增用户");
+public class AddAdministratorInterface {
+    JFrame jf=new JFrame("新增用户");
 
-    final int WIDTH = 500;
-    final int HEIGHT = 390;
+    final int WIDTH=500;
+    final int HEIGHT=390;
 
     //组装视图
-    public void init(String adName) throws Exception {
+    public void init() throws Exception{
         //设置窗口属性
-        jf.setBounds((ScreenUtils.getScreenWidth() - WIDTH) / 2, (ScreenUtils.getScreenHeight() - HEIGHT) / 2, WIDTH, HEIGHT);
+        jf.setBounds((ScreenUtils.getScreenWidth()-WIDTH)/2,(ScreenUtils.getScreenHeight()-HEIGHT)/2,WIDTH,HEIGHT);
         jf.setResizable(false);
         jf.setIconImage(ImageIO.read(new File("images\\logo.png")));
 
-        BackGroundPanel bgPanel = new BackGroundPanel(ImageIO.read(new File("images\\addUser.png")));
-        bgPanel.setBounds(0, 0, WIDTH, HEIGHT);
+        BackGroundPanel bgPanel=new BackGroundPanel(ImageIO.read(new File("images\\addUser.png")));
+        bgPanel.setBounds(0,0,WIDTH,HEIGHT);
 
-        Box vBox = Box.createVerticalBox();
+        Box vBox=Box.createVerticalBox();
 
         //组装账号
         Box uBox=Box.createHorizontalBox();
@@ -106,21 +102,12 @@ public class AddUserInterface {
         tBox.add(Box.createHorizontalStrut(20));
         tBox.add(tField);
 
-        //组装权限
-        Box aBox = Box.createHorizontalBox();
-        JLabel aLabel = new JLabel("权限：");
-        JComboBox<String> authoritySelect = new JComboBox<String>();
-        authoritySelect.addItem("后勤管理");
-        authoritySelect.addItem("生活管家");
-
-        aBox.add(aLabel);
-        aBox.add(Box.createHorizontalStrut(20));
-        aBox.add(authoritySelect);
 
         //组装按钮
-        Box btnBox = Box.createHorizontalBox();
-        JButton confirmBtn = new JButton("确认");
-        JButton backBtn = new JButton("返回");
+        Box btnBox=Box.createHorizontalBox();
+        JButton confirmBtn=new JButton("确认");
+        JButton backBtn=new JButton("返回");
+
         confirmBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -131,18 +118,17 @@ public class AddUserInterface {
                 String gender=bg.isSelected(maleBtn.getModel())?maleBtn.getText():femaleBtn.getText();
                 String birthDate=bField.getText().trim();
                 String telephoneNUmber=tField.getText().trim();
-                String authority=authoritySelect.getSelectedItem().toString();
 
-                User user=new User(account,password,name,gender,birthDate,telephoneNUmber,authority);
+                User manager=new User(account,password,name,gender,birthDate,telephoneNUmber,"管理员");
 
                 try {
-                    if(!Check.ifAccountIsUsed(user)){
+                    if(!Check.ifAccountIsUsed(manager)){
                         JOptionPane.showMessageDialog(jf,"账户已存在"," 错误提示",JOptionPane.ERROR_MESSAGE);
                         return;
                     }
 
                     try {
-                        if(!Check.checkForm(user)){
+                        if(!Check.checkForm(manager)){
                             JOptionPane.showMessageDialog(jf,"输入的信息格式有误，请重新输入","错误提示",JOptionPane.ERROR_MESSAGE);
                             return;
                         }
@@ -158,16 +144,12 @@ public class AddUserInterface {
                     Gson gson=new Gson();
                     ArrayList<User> users = ReadFile.readFile("user");
                     if(users.size()==0){
-                        user.setId("1");
+                        manager.setId("1");
                     }else {
                         int lastId=Integer.parseInt(users.get(users.size() - 1).getId());
-                        user.setId(String.valueOf(lastId+1)) ;
+                        manager.setId(String.valueOf(lastId+1)) ;
                     }
-                    if(user.getAuthority().equals("生活管家")){
-                        Steward steward = new Steward(user);
-                        writeFile(steward);
-                    }
-                    String s = gson.toJson(user);
+                    String s = gson.toJson(manager);
                     bw.write(s);
                     bw.newLine();
                     bw.flush();
@@ -176,10 +158,10 @@ public class AddUserInterface {
                     ex.printStackTrace();
                 }
 
-                JOptionPane.showMessageDialog(jf,"添加成功！"," ",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(jf,"注册成功！"," ",JOptionPane.INFORMATION_MESSAGE);
 
                 try {
-                    new AdministratorInterface().init(adName);
+                    new MainInterface().init();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -192,7 +174,7 @@ public class AddUserInterface {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new AdministratorInterface().init(adName);
+                    new MainInterface().init();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -201,10 +183,10 @@ public class AddUserInterface {
             }
         });
 
-
         btnBox.add(confirmBtn);
         btnBox.add(Box.createHorizontalStrut(80));
         btnBox.add(backBtn);
+
         vBox.add(Box.createVerticalStrut(30));
         vBox.add(uBox);
         vBox.add(Box.createVerticalStrut(15));
@@ -218,30 +200,19 @@ public class AddUserInterface {
         vBox.add(Box.createVerticalStrut(15));
         vBox.add(tBox);
         vBox.add(Box.createVerticalStrut(15));
-        vBox.add(aBox);
-        vBox.add(Box.createVerticalStrut(15));
         vBox.add(btnBox);
 
         bgPanel.add(vBox);
 
         jf.add(bgPanel);
 
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.setVisible(true);
 
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
 
-    public void writeFile(Steward steward) throws IOException{
-        BufferedWriter bw=new BufferedWriter(new FileWriter("files\\ServiceObjectMessage",true));
-        Gson gson=new Gson();
-        String s = gson.toJson(steward);
-        bw.write(s);
-        bw.newLine();
-        bw.flush();
+    public static void main(String[] args) throws Exception {
+        new AddAdministratorInterface().init();
     }
-
-//    public static void main(String[] args) throws Exception {
-//        new AddUserInterface().init();
-//    }
 }

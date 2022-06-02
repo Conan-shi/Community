@@ -1,18 +1,15 @@
-package ui;
+package views;
 
-import Actors.Bus;
-import Actors.Steward;
-import Actors.User;
+import models.Bus;
+import models.Steward;
 import com.google.gson.Gson;
 import component.BackGroundPanel;
-import util.Check;
-import util.RWFileForBus;
-import util.ReadFile;
-import util.ScreenUtils;
+import controllers.Check;
+import DAO.RWFileForBus;
+import controllers.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;

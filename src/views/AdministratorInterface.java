@@ -1,7 +1,9 @@
-package ui;
+package views;
 
-import Actors.User;
-import util.*;
+import DAO.LoadUsersData;
+import DAO.RWFileForUser;
+import models.User;
+import controllers.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
