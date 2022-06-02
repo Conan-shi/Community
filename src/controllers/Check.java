@@ -1,10 +1,11 @@
-package util;
+package controllers;
 
-import Actors.Bus;
-import Actors.OldMan;
-import Actors.User;
+import DAO.RWFileForBus;
+import DAO.RWFileForOldMan;
+import models.Bus;
+import models.OldMan;
+import models.User;
 import com.google.gson.Gson;
-import com.sun.jdi.PathSearchingVirtualMachine;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

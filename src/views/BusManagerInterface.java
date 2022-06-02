@@ -1,7 +1,9 @@
-package ui;
+package views;
 
-import Actors.Bus;
-import util.*;
+import DAO.LoadBusData;
+import DAO.RWFileForBus;
+import models.Bus;
+import controllers.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
