@@ -1,4 +1,4 @@
-package Actors;
+package models;
 
 public class OldMan {
     private String stewardAccount;

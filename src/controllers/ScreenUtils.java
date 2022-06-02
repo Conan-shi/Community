@@ -1,4 +1,4 @@
-package util;
+package controllers;
 
 import java.awt.*;
 

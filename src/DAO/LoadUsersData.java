@@ -1,9 +1,8 @@
-package util;
+package DAO;
 
-import Actors.User;
+import models.User;
 import com.google.gson.Gson;
 
-import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;

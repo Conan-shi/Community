@@ -1,14 +1,11 @@
-package ui;
+package views;
 
-import Actors.Bus;
-import Actors.OldMan;
-import Actors.Steward;
-import com.google.gson.Gson;
+import models.Bus;
+import models.OldMan;
 import component.BackGroundPanel;
-import util.CheckTime;
-import util.RWFileForBus;
-import util.RWFileForOldMan;
-import util.ScreenUtils;
+import DAO.RWFileForBus;
+import DAO.RWFileForOldMan;
+import controllers.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

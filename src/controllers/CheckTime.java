@@ -1,8 +1,7 @@
-package util;
+package controllers;
 
-import Actors.Bus;
+import models.Bus;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;

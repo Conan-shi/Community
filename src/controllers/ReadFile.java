@@ -1,12 +1,11 @@
-package util;
+package controllers;
 
-import Actors.Bus;
-import Actors.OldMan;
-import Actors.User;
+import models.Bus;
+import models.OldMan;
+import models.User;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;

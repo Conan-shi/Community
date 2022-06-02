@@ -1,18 +1,15 @@
-package ui;
+package views;
 
-import Actors.User;
+import models.User;
 import component.BackGroundPanel;
-import util.CheckIn;
-import util.RWFileForUser;
-import util.ReadFile;
-import util.ScreenUtils;
+import controllers.CheckIn;
+import controllers.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.util.ArrayList;
 
 public class MainInterface {
     JFrame jf=new JFrame("活力长者社区");

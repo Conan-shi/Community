@@ -1,8 +1,7 @@
-package util;
+package DAO;
 
-import Actors.OldMan;
-import Actors.Steward;
-import Actors.User;
+import models.OldMan;
+import models.User;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;

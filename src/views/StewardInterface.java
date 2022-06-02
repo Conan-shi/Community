@@ -1,11 +1,9 @@
-package ui;
+package views;
 
-import Actors.OldMan;
-import Actors.User;
+import models.User;
 import com.google.gson.Gson;
-import util.LoadOldManData;
-import util.LoadUsersData;
-import util.ScreenUtils;
+import DAO.LoadOldManData;
+import controllers.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

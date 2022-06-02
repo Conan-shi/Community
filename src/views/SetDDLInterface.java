@@ -1,20 +1,16 @@
-package ui;
+package views;
 
-import Actors.Bus;
-import Actors.User;
-import com.google.gson.Gson;
-import util.Check;
-import util.RWFileForBus;
-import util.ScreenUtils;
+import models.Bus;
+import controllers.Check;
+import DAO.RWFileForBus;
+import controllers.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 

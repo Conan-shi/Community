@@ -1,12 +1,12 @@
-package ui;
+package views;
 
-import Actors.OldMan;
-import Actors.Steward;
-import Actors.User;
+import models.OldMan;
+import models.Steward;
+import models.User;
 import com.google.gson.Gson;
-import util.DelUser;
-import util.RWFileForOldMan;
-import util.ScreenUtils;
+import controllers.DelUser;
+import DAO.RWFileForOldMan;
+import controllers.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 
-import static ui.SetServiceObjectInterface.readFile;
+import static views.SetServiceObjectInterface.readFile;
 
 public class ConfirmUserInterface {
     JFrame jf = new JFrame("警告");

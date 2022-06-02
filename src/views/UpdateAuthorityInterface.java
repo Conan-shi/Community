@@ -1,13 +1,13 @@
-package ui;
+package views;
 
-import Actors.OldMan;
-import Actors.Steward;
-import Actors.User;
+import models.OldMan;
+import models.Steward;
+import models.User;
 import com.google.gson.Gson;
 import component.BackGroundPanel;
-import util.RWFileForOldMan;
-import util.RWFileForUser;
-import util.ScreenUtils;
+import DAO.RWFileForOldMan;
+import DAO.RWFileForUser;
+import controllers.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,7 +15,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class UpdateAuthorityInterface {
     JFrame jf = new JFrame("修改权限");

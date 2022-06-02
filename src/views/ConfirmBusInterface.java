@@ -1,14 +1,8 @@
-package ui;
+package views;
 
-import Actors.Bus;
-import Actors.OldMan;
-import Actors.Steward;
-import Actors.User;
-import com.google.gson.Gson;
-import util.DelUser;
-import util.RWFileForBus;
-import util.RWFileForOldMan;
-import util.ScreenUtils;
+import models.Bus;
+import DAO.RWFileForBus;
+import controllers.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -17,8 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
-
-import static ui.SetServiceObjectInterface.readFile;
 
 public class ConfirmBusInterface {
     JFrame jf = new JFrame("警告");
