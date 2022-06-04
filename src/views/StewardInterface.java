@@ -1,9 +1,11 @@
 package views;
 
+import dao.RWFileForUser;
 import models.User;
 import com.google.gson.Gson;
-import DAO.LoadOldManData;
-import controllers.ScreenUtils;
+import dao.LoadOldManData;
+import utils.GetSelectedRow;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -94,7 +96,7 @@ public class StewardInterface {
             titles.add(title);
         }
 
-        int selectedRow=getSelectedRow(account);
+        int selectedRow= GetSelectedRow.getSelectedRow(account);
         Vector<Vector> tableData = LoadOldManData.loadOldManData(selectedRow);
 
         TableModel tableModel = new DefaultTableModel(tableData, titles);
@@ -146,26 +148,6 @@ public class StewardInterface {
 
     }
 
-    public static int getSelectedRow(String account)throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("files\\usersMessage"));
 
-        ArrayList<User> users = new ArrayList<User>();
-        Gson gson=new Gson();
-
-        String line;
-        while ((line = br.readLine()) != null) {
-            User user = gson.fromJson(line, User.class);
-            users.add(user);
-        }
-        br.close();
-
-        int index=0;
-        for(int i=0;i<users.size();i++){
-            if(users.get(i).getAccount().equals(account)){
-                index=i;
-            }
-        }
-        return index;
-    }
 
 }

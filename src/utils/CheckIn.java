@@ -1,4 +1,4 @@
-package controllers;
+package utils;
 
 import models.User;
 import com.google.gson.Gson;

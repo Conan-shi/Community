@@ -1,8 +1,9 @@
 package views;
 
+import controllers.DelPassengerController;
 import models.Bus;
-import DAO.RWFileForBus;
-import controllers.ScreenUtils;
+import dao.RWFileForBus;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -39,7 +40,9 @@ public class ConfirmPassengerInterface {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    delete(selectedRow,selectedPassengerRow);
+                    DelPassengerController delPassengerController = new DelPassengerController();
+                    delPassengerController.delPassenger(selectedRow,selectedPassengerRow);
+
                     JOptionPane.showMessageDialog(jf, "删除成功", " ", JOptionPane.INFORMATION_MESSAGE);
                     new CheckPassengerInterface().init(bmName,selectedRow);
 
@@ -92,21 +95,6 @@ public class ConfirmPassengerInterface {
 
     }
 
-    public void delete(int selectedRow,int selectedPassengerRow) throws Exception {
-        ArrayList<Bus> buses = RWFileForBus.readFile();
-        Bus bus = buses.get(selectedRow);
-
-        ArrayList<String> passengers = bus.getPassengers();
-        passengers.remove(selectedPassengerRow);
-
-        int num = Integer.parseInt(bus.getReservedNumber());
-        num--;
-        bus.setReservedNumber(String.valueOf(num));
-
-
-        RWFileForBus.writeFile(buses);
-
-    }
 
 
 }

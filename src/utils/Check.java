@@ -1,7 +1,8 @@
-package controllers;
+package utils;
 
-import DAO.RWFileForBus;
-import DAO.RWFileForOldMan;
+import dao.RWFileForBus;
+import dao.RWFileForOldMan;
+import dao.RWFileForUser;
 import models.Bus;
 import models.OldMan;
 import models.User;
@@ -318,6 +319,18 @@ public class Check {
         }
         return flag;
 
+    }
+
+    public static boolean checkHaveSteward()throws IOException{
+        ArrayList<User> users = RWFileForUser.readFile();
+        boolean flag=false;
+
+        for (User user:users){
+            if (user.getAuthority().equals("生活管家")){
+                flag=true;
+            }
+        }
+        return flag;
     }
 
 

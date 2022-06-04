@@ -1,12 +1,13 @@
 package views;
 
+import controllers.AddBusController;
 import models.Bus;
 import models.Steward;
 import com.google.gson.Gson;
 import component.BackGroundPanel;
-import controllers.Check;
-import DAO.RWFileForBus;
-import controllers.ScreenUtils;
+import utils.Check;
+import dao.RWFileForBus;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -221,7 +222,8 @@ public class AddBusInterface {
                         JOptionPane.showMessageDialog(jf,"输入的信息格式有误，请重新输入","错误提示",JOptionPane.ERROR_MESSAGE);
                         return;
                     }
-                    RWFileForBus.updateFile(bus);
+                    AddBusController addBusController = new AddBusController();
+                    addBusController.addBus(bus);
 
                     JOptionPane.showMessageDialog(jf,"添加成功！"," ",JOptionPane.INFORMATION_MESSAGE);
                     new BusManagerInterface().init(bmName);

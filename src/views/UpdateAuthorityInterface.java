@@ -1,13 +1,14 @@
 package views;
 
+import controllers.UpDateAuthorityController;
 import models.OldMan;
 import models.Steward;
 import models.User;
 import com.google.gson.Gson;
 import component.BackGroundPanel;
-import DAO.RWFileForOldMan;
-import DAO.RWFileForUser;
-import controllers.ScreenUtils;
+import dao.RWFileForOldMan;
+import dao.RWFileForUser;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -133,36 +134,13 @@ public class UpdateAuthorityInterface {
                 //获取用户录入的数据
                 user.setAuthority(authoritySelect.getSelectedItem().toString());
                 users.set(selectedRow,user);
-
+                UpDateAuthorityController upDateAuthorityController = new UpDateAuthorityController();
                 try {
-
-                    if(user.getAuthority().equals("生活管家")){
-                        Steward steward = new Steward(user);
-                        upDateSOMFile(steward);
-                    }else {
-                        ArrayList<Steward> stewards = readFileFromSOM();
-                        for(int i=0;i< stewards.size();i++){
-                            if(stewards.get(i).getAccount().equals(user.getAccount())){
-                                stewards.remove(i);
-                            }
-                        }
-                        writeFileToSOM(stewards);
-
-                        ArrayList<OldMan> oldMEN = RWFileForOldMan.readFile();
-                        for(int i=0;i<oldMEN.size();i++){
-                            OldMan oldMan = oldMEN.get(i);
-                            if(oldMan.getStewardAccount().equals(user.getAccount())){
-                                oldMan.setStewardAccount("");
-                            }
-                        }
-                        RWFileForOldMan.writeFile(oldMEN);
-
-                    }
-                    RWFileForUser.WriteFile(users);
-
+                    upDateAuthorityController.upDateAuthority(user,users);
                 } catch (IOException ex) {
-                    ex.printStackTrace();
+                    throw new RuntimeException(ex);
                 }
+
 
                 JOptionPane.showMessageDialog(jf,"修改成功！"," ",JOptionPane.INFORMATION_MESSAGE);
 
@@ -218,44 +196,5 @@ public class UpdateAuthorityInterface {
 
 
     }
-    public void upDateSOMFile(Steward steward) throws IOException{
-        BufferedWriter bw=new BufferedWriter(new FileWriter("files\\ServiceObjectMessage",true));
-        Gson gson=new Gson();
-        String s = gson.toJson(steward);
-        bw.write(s);
-        bw.newLine();
-        bw.flush();
-        bw.close();
-    }
-
-    public ArrayList<Steward> readFileFromSOM()throws IOException{
-        BufferedReader br=new BufferedReader(new FileReader("files\\ServiceObjectMessage"));
-        ArrayList<Steward> stewards=new ArrayList<>();
-
-        Gson gson=new Gson();
-        String line;
-        while((line=br.readLine())!=null){
-            Steward steward = gson.fromJson(line, Steward.class);
-            stewards.add(steward);
-        }
-        br.close();
-        return stewards;
-    }
-
-    public void writeFileToSOM(ArrayList<Steward> stewards) throws IOException{
-        BufferedWriter bw=new BufferedWriter(new FileWriter("files\\ServiceObjectMessage"));
-        Gson gson=new Gson();
-
-        for(Steward steward:stewards){
-            String s = gson.toJson(steward);
-            bw.write(s);
-            bw.newLine();
-            bw.flush();
-        }
-
-        bw.close();
-
-    }
-
 
 }

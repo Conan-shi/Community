@@ -1,9 +1,10 @@
 package views;
 
+import controllers.SetDdlController;
 import models.Bus;
-import controllers.Check;
-import DAO.RWFileForBus;
-import controllers.ScreenUtils;
+import utils.Check;
+import dao.RWFileForBus;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -74,8 +75,8 @@ public class SetDDLInterface {
                     ArrayList<Bus> buses = RWFileForBus.readFile();
                     Bus bus = buses.get(selectedRow);
 
-                    if(Check.checkBusDdl(ddl,bus.getStartTime())){
-                        setDDL(selectedRow,ddl);
+                    SetDdlController setDdlController = new SetDdlController();
+                    if(setDdlController.setDdl(ddl,selectedRow)){
                         JOptionPane.showMessageDialog(jf,"设置成功！"," ",JOptionPane.INFORMATION_MESSAGE);
                         new BusManagerInterface().init(bmName);
 
@@ -110,13 +111,7 @@ public class SetDDLInterface {
     }
 
 
-    public static void setDDL(int selectedRow,String ddl)throws IOException {
-        ArrayList<Bus> buses = RWFileForBus.readFile();
-        buses.get(selectedRow).setDdl(ddl);
 
-        RWFileForBus.writeFile(buses);
-
-    }
 
 
 }

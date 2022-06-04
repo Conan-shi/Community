@@ -1,12 +1,13 @@
 package views;
 
+import controllers.AddUserController;
 import models.Steward;
 import models.User;
 import com.google.gson.Gson;
 import component.BackGroundPanel;
-import controllers.Check;
-import controllers.ReadFile;
-import controllers.ScreenUtils;
+import utils.Check;
+import utils.ReadFile;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -153,27 +154,11 @@ public class AddUserInterface {
                     ex.printStackTrace();
                 }
 
+                AddUserController addUserController = new AddUserController();
                 try {
-                    BufferedWriter bw=new BufferedWriter(new FileWriter("files\\usersMessage",true));
-                    Gson gson=new Gson();
-                    ArrayList<User> users = ReadFile.readFile("user");
-                    if(users.size()==0){
-                        user.setId("1");
-                    }else {
-                        int lastId=Integer.parseInt(users.get(users.size() - 1).getId());
-                        user.setId(String.valueOf(lastId+1)) ;
-                    }
-                    if(user.getAuthority().equals("生活管家")){
-                        Steward steward = new Steward(user);
-                        writeFile(steward);
-                    }
-                    String s = gson.toJson(user);
-                    bw.write(s);
-                    bw.newLine();
-                    bw.flush();
-
+                    addUserController.addUser(user);
                 } catch (IOException ex) {
-                    ex.printStackTrace();
+                    throw new RuntimeException(ex);
                 }
 
                 JOptionPane.showMessageDialog(jf,"添加成功！"," ",JOptionPane.INFORMATION_MESSAGE);
@@ -232,14 +217,7 @@ public class AddUserInterface {
 
     }
 
-    public void writeFile(Steward steward) throws IOException{
-        BufferedWriter bw=new BufferedWriter(new FileWriter("files\\ServiceObjectMessage",true));
-        Gson gson=new Gson();
-        String s = gson.toJson(steward);
-        bw.write(s);
-        bw.newLine();
-        bw.flush();
-    }
+
 
 //    public static void main(String[] args) throws Exception {
 //        new AddUserInterface().init();

@@ -1,12 +1,13 @@
 package views;
 
+import controllers.UpDateOldManController;
 import models.OldMan;
 import models.Steward;
 import com.google.gson.Gson;
 import component.BackGroundPanel;
-import controllers.Check;
-import controllers.ReadFile;
-import controllers.ScreenUtils;
+import utils.Check;
+import utils.ReadFile;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -99,20 +100,19 @@ public class UpdateOldManInterface {
                 String telephoneNUmber = tField.getText().trim();
 
                 OldMan oldMan = new OldMan("", account, name, gender, birthDate, telephoneNUmber);
+
                 try {
-                    System.out.println(Check.checkForm(oldMan));
                     if (!Check.checkForm(oldMan)) {
                         JOptionPane.showMessageDialog(jf, "输入的信息格式有误，请重新输入", "错误提示", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
+
+                    UpDateOldManController.upDateOldMan(oldMan);
+
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-                try {
-                    updateOldMan(oldMan);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+
                 JOptionPane.showMessageDialog(jf, "修改成功！", " ", JOptionPane.INFORMATION_MESSAGE);
 
                 try {
@@ -162,78 +162,7 @@ public class UpdateOldManInterface {
 
     }
 
-    public void upDateFile(Steward steward) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter("files\\ServiceObjectMessage", true));
-        Gson gson = new Gson();
-        String s = gson.toJson(steward);
-        bw.write(s);
-        bw.newLine();
-        bw.flush();
-        bw.close();
-    }
 
-    public ArrayList<Steward> readFile() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("files\\ServiceObjectMessage"));
-        ArrayList<Steward> stewards = new ArrayList<>();
-
-        Gson gson = new Gson();
-        String line;
-        while ((line = br.readLine()) != null) {
-            Steward steward = gson.fromJson(line, Steward.class);
-            stewards.add(steward);
-        }
-        br.close();
-        return stewards;
-    }
-
-    public void writeFile(ArrayList<Steward> stewards) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter("files\\ServiceObjectMessage"));
-        Gson gson = new Gson();
-
-        for (Steward steward : stewards) {
-            String s = gson.toJson(steward);
-            bw.write(s);
-            bw.newLine();
-            bw.flush();
-        }
-
-        bw.close();
-
-    }
-
-    public void updateOldMan(OldMan oldMan) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("files\\oldManMessage"));
-
-        ArrayList<OldMan> oldMEN = new ArrayList<OldMan>();
-        Gson gson = new Gson();
-
-        String line;
-        while ((line = br.readLine()) != null) {
-            OldMan oldMan0 = gson.fromJson(line, OldMan.class);
-            oldMEN.add(oldMan0);
-        }
-        br.close();
-
-        for (int i=0;i<oldMEN.size();i++) {
-            OldMan oldMan1=oldMEN.get(i);
-            if (oldMan1.getAccount().equals(oldMan.getAccount())) {
-                oldMan1.setName(oldMan.getName());
-                oldMan1.setGender(oldMan.getGender());
-                oldMan1.setBirthDate(oldMan.getBirthDate());
-                oldMan1.setTelephoneNumber(oldMan.getTelephoneNumber());
-            }
-        }
-
-        BufferedWriter bw = new BufferedWriter(new FileWriter("files\\oldManMessage"));
-        for (OldMan oldMan1 : oldMEN) {
-            String s = gson.toJson(oldMan1);
-            bw.write(s);
-            bw.newLine();
-            bw.flush();
-        }
-        bw.close();
-
-    }
 }
 
 

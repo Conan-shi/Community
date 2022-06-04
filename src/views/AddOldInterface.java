@@ -1,11 +1,12 @@
 package views;
 
+import controllers.AddOldController;
 import models.OldMan;
 import com.google.gson.Gson;
 import component.BackGroundPanel;
-import controllers.Check;
-import controllers.ReadFile;
-import controllers.ScreenUtils;
+import utils.Check;
+import utils.ReadFile;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -128,23 +129,11 @@ public class AddOldInterface {
                     ex.printStackTrace();
                 }
 
+                AddOldController addOldController = new AddOldController();
                 try {
-                    BufferedWriter bw=new BufferedWriter(new FileWriter("files\\oldManMessage",true));
-                    Gson gson=new Gson();
-                    ArrayList<OldMan> oldMEN = ReadFile.readFile("oldMan");
-                    if(oldMEN.size()==0){
-                        oldMan.setId("1");
-                    }else {
-                        int lastId=Integer.parseInt(oldMEN.get(oldMEN.size() - 1).getId());
-                        oldMan.setId(String.valueOf(lastId+1)) ;
-                    }
-                    String s = gson.toJson(oldMan);
-                    bw.write(s);
-                    bw.newLine();
-                    bw.flush();
-
+                    addOldController.addOld(oldMan);
                 } catch (IOException ex) {
-                    ex.printStackTrace();
+                    throw new RuntimeException(ex);
                 }
 
                 JOptionPane.showMessageDialog(jf,"添加老人成功！"," ",JOptionPane.INFORMATION_MESSAGE);

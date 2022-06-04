@@ -1,12 +1,13 @@
 package views;
 
+import controllers.DelUserController;
 import models.OldMan;
 import models.Steward;
 import models.User;
 import com.google.gson.Gson;
-import controllers.DelUser;
-import DAO.RWFileForOldMan;
-import controllers.ScreenUtils;
+import utils.DelUser;
+import dao.RWFileForOldMan;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,8 +16,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
-
-import static views.SetServiceObjectInterface.readFile;
 
 public class ConfirmUserInterface {
     JFrame jf = new JFrame("警告");
@@ -43,27 +42,16 @@ public class ConfirmUserInterface {
         confirmBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                BufferedReader br = null;
                 try {
-                    br = new BufferedReader(new FileReader("files\\usersMessage"));
-                    ArrayList<User> users = new ArrayList<>();
-                    Gson gson = new Gson();
-                    String line;
-                    while ((line = br.readLine()) != null) {
-                        User user = gson.fromJson(line, User.class);
-                        users.add(user);
-                    }
-                    br.close();
+                    DelUserController delUserController = new DelUserController();
+                    delUserController.delUser(selectedRow);
 
-                    delete(users,selectedRow);
                     JOptionPane.showMessageDialog(jf, "删除成功", " ", JOptionPane.INFORMATION_MESSAGE);
                     new AdministratorInterface().init(adName);
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
-
-
 
                 jf.dispose();
             }
@@ -110,65 +98,8 @@ public class ConfirmUserInterface {
 
     }
 
-    public void delete(ArrayList<User> users, int selectedRow) throws Exception {
-        User selectedUser = users.get(selectedRow);
-        ArrayList delUser = DelUser.delUser(users, selectedRow);
-        Gson gson=new Gson();
-
-        BufferedWriter bw = new BufferedWriter(new FileWriter("files\\usersMessage"));
-        for (Object user : delUser) {
-            String s = gson.toJson(user);
-            bw.write(s);
-            bw.newLine();
-            bw.flush();
-        }
-        bw.close();
-
-        if (selectedUser.getAuthority().equals("生活管家")) {
-            ArrayList<Steward> stewards = readFile();
-            for (int i = 0; i < stewards.size(); i++) {
-                Steward steward = stewards.get(i);
-                if (steward.getAccount().equals(selectedUser.getAccount())) {
-                    stewards.remove(i);
-                }
-            }
-            writeFile(stewards);
-
-            ArrayList<OldMan> oldMEN = RWFileForOldMan.readFile();
-
-            for(OldMan oldMan:oldMEN){
-                if(oldMan.getStewardAccount().equals(selectedUser.getAccount())){
-                    oldMan.setStewardAccount("");
-                }
-            }
-
-            BufferedWriter bw2=new BufferedWriter(new FileWriter("files\\oldManMessage"));
-            for(OldMan oldMan:oldMEN){
-                String s = gson.toJson(oldMan);
-                bw2.write(s);
-                bw2.newLine();
-                bw2.flush();
-            }
-            bw2.close();
-        }
 
 
 
-    }
-
-    public void writeFile(ArrayList<Steward> stewards) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter("files\\ServiceObjectMessage"));
-        Gson gson = new Gson();
-
-        for (Steward steward : stewards) {
-            String s = gson.toJson(steward);
-            bw.write(s);
-            bw.newLine();
-            bw.flush();
-        }
-
-        bw.close();
-
-    }
 
 }

@@ -2,11 +2,12 @@ package views;
 
 import models.User;
 import component.BackGroundPanel;
-import controllers.CheckIn;
-import controllers.ScreenUtils;
+import utils.CheckIn;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
@@ -33,6 +34,8 @@ public class MainInterface {
         //组装用户名
         Box uBox=Box.createHorizontalBox();
         JLabel uLabel=new JLabel("账户");
+        Font font = new Font("宋体", Font.BOLD, 20);//创建1个字体实例
+        uLabel.setFont(font);
         JTextField uField=new JTextField(15);
 
         uBox.add(uLabel);
@@ -42,6 +45,7 @@ public class MainInterface {
         //组装密码
         Box pBox=Box.createHorizontalBox();
         JLabel pLabel=new JLabel("密码");
+        pLabel.setFont(font);
         JTextField pField=new JTextField(15);
 
         pBox.add(pLabel);

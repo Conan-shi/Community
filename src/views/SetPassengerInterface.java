@@ -1,11 +1,12 @@
 package views;
 
+import controllers.SetPassengerController;
 import models.Bus;
 import models.OldMan;
 import component.BackGroundPanel;
-import DAO.RWFileForBus;
-import DAO.RWFileForOldMan;
-import controllers.ScreenUtils;
+import dao.RWFileForBus;
+import dao.RWFileForOldMan;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -79,12 +80,8 @@ public class SetPassengerInterface {
                 String oldManAccount = st4.nextToken();
 
                 try {
-                    ArrayList<Bus> buses = RWFileForBus.readFile();
-                    Bus bus = buses.get(selectedRow);
-
-                    addPassengerNumber(bus);
-                    bus.addPassengers(oldManAccount);
-                    RWFileForBus.writeFile(buses);
+                    SetPassengerController setPassengerController = new SetPassengerController();
+                    setPassengerController.setPassenger(selectedRow,oldManAccount);
 
                     JOptionPane.showMessageDialog(jf, "添加乘客成功！", " ", JOptionPane.INFORMATION_MESSAGE);
                     new BusManagerInterface().init(bmName);
@@ -136,12 +133,5 @@ public class SetPassengerInterface {
 
     }
 
-    public void addPassengerNumber(Bus bus) {
-        String reservedNumber = bus.getReservedNumber();
-        int num = Integer.parseInt(reservedNumber);
-        num++;
 
-        bus.setReservedNumber(String.valueOf(num));
-
-    }
 }

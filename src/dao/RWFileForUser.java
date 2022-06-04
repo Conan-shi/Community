@@ -1,4 +1,4 @@
-package DAO;
+package dao;
 
 import models.User;
 import com.google.gson.Gson;

@@ -1,4 +1,4 @@
-package DAO;
+package dao;
 
 import models.Bus;
 import com.google.gson.Gson;

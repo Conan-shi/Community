@@ -1,11 +1,13 @@
 package views;
 
+import controllers.AddAdministratorController;
+import dao.RWFileForUser;
 import models.User;
 import com.google.gson.Gson;
 import component.BackGroundPanel;
-import controllers.Check;
-import controllers.ReadFile;
-import controllers.ScreenUtils;
+import utils.Check;
+import utils.ReadFile;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -139,23 +141,12 @@ public class AddAdministratorInterface {
                     ex.printStackTrace();
                 }
 
-                try {
-                    BufferedWriter bw=new BufferedWriter(new FileWriter("files\\usersMessage",true));
-                    Gson gson=new Gson();
-                    ArrayList<User> users = ReadFile.readFile("user");
-                    if(users.size()==0){
-                        manager.setId("1");
-                    }else {
-                        int lastId=Integer.parseInt(users.get(users.size() - 1).getId());
-                        manager.setId(String.valueOf(lastId+1)) ;
-                    }
-                    String s = gson.toJson(manager);
-                    bw.write(s);
-                    bw.newLine();
-                    bw.flush();
+                AddAdministratorController addAdministratorController = new AddAdministratorController();
 
+                try {
+                    addAdministratorController.addAdministrator(manager);
                 } catch (IOException ex) {
-                    ex.printStackTrace();
+                    throw new RuntimeException(ex);
                 }
 
                 JOptionPane.showMessageDialog(jf,"注册成功！"," ",JOptionPane.INFORMATION_MESSAGE);

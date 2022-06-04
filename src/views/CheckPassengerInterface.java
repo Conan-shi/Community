@@ -2,9 +2,9 @@ package views;
 
 import models.Bus;
 import models.OldMan;
-import DAO.RWFileForBus;
-import DAO.RWFileForOldMan;
-import controllers.ScreenUtils;
+import dao.RWFileForBus;
+import dao.RWFileForOldMan;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

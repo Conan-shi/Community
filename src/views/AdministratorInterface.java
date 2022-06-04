@@ -1,9 +1,9 @@
 package views;
 
-import DAO.LoadUsersData;
-import DAO.RWFileForUser;
+import dao.LoadUsersData;
+import dao.RWFileForUser;
 import models.User;
-import controllers.*;
+import utils.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -109,7 +109,7 @@ public class AdministratorInterface {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if(!checkHaveSteward()){
+                    if(!Check.checkHaveSteward()){
                         JOptionPane.showMessageDialog(jf, "没有生活管家，无法设置服务对象", "错误", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
@@ -180,8 +180,8 @@ public class AdministratorInterface {
             return jck;
         });
 
-        TableColumn firsetColumn = table.getColumnModel().getColumn(0);
-        firsetColumn.setPreferredWidth(30);
+        TableColumn firstColumn = table.getColumnModel().getColumn(0);
+        firstColumn.setPreferredWidth(30);
 
         TableColumn secondColumn = table.getColumnModel().getColumn(1);
         secondColumn.setPreferredWidth(30);
@@ -206,9 +206,10 @@ public class AdministratorInterface {
                 } else {
 
                     try {
-                        ArrayList<User> users = RWFileForUser.readFile();
 
+                        ArrayList<User> users = RWFileForUser.readFile();
                         User selectedUser = users.get(selectedRow);
+
                         String account=selectedUser.getAccount();
                         new ConfirmUserInterface().init(name,selectedRow,account);
                     } catch (Exception ex) {
@@ -284,16 +285,6 @@ public class AdministratorInterface {
 //        new AdministratorInterface().init();
 //    }
 
-    public static boolean checkHaveSteward()throws IOException{
-        ArrayList<User> users = RWFileForUser.readFile();
-        boolean flag=false;
 
-        for (User user:users){
-            if (user.getAuthority().equals("生活管家")){
-                flag=true;
-            }
-        }
-        return flag;
-    }
 
 }

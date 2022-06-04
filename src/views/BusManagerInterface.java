@@ -1,9 +1,9 @@
 package views;
 
-import DAO.LoadBusData;
-import DAO.RWFileForBus;
+import dao.LoadBusData;
+import dao.RWFileForBus;
 import models.Bus;
-import controllers.*;
+import utils.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

@@ -1,8 +1,9 @@
 package views;
 
+import controllers.DelBusController;
 import models.Bus;
-import DAO.RWFileForBus;
-import controllers.ScreenUtils;
+import dao.RWFileForBus;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -38,7 +39,8 @@ public class ConfirmBusInterface {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    delete(selectedRow);
+                    DelBusController delBusController = new DelBusController();
+                    delBusController.delBus(selectedRow);
 
                     JOptionPane.showMessageDialog(jf, "删除成功", " ", JOptionPane.INFORMATION_MESSAGE);
                     new BusManagerInterface().init(bmName);
@@ -92,15 +94,6 @@ public class ConfirmBusInterface {
 
     }
 
-    public void delete(int selectedRow) throws Exception {
-        ArrayList<Bus> buses = RWFileForBus.readFile();
-        buses.remove(selectedRow);
-
-        RWFileForBus.writeFile(buses);
-
-
-
-    }
 
 
 }

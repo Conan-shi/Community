@@ -1,4 +1,4 @@
-package DAO;
+package dao;
 
 import models.OldMan;
 import com.google.gson.Gson;

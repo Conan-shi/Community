@@ -1,7 +1,7 @@
 package views;
 
-import DAO.LoadOldManData;
-import controllers.ScreenUtils;
+import dao.LoadOldManData;
+import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
