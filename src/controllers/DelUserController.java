@@ -15,6 +15,16 @@ import java.util.ArrayList;
 
 
 public class DelUserController {
+    private static DelUserController singletonInstance=null;
+
+    static public DelUserController getSingletonInstance(){
+        if(singletonInstance==null){
+            singletonInstance=new DelUserController();
+        }
+        return singletonInstance;
+    }
+
+    private DelUserController(){}
 
     public  void delUser(int selectedRow) throws Exception {
         ArrayList<User> users = RWFileForUser.readFile();

@@ -39,7 +39,7 @@ public class ConfirmBusInterface {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    DelBusController delBusController = new DelBusController();
+                    DelBusController delBusController =DelBusController.getSingletonInstance();
                     delBusController.delBus(selectedRow);
 
                     JOptionPane.showMessageDialog(jf, "删除成功", " ", JOptionPane.INFORMATION_MESSAGE);

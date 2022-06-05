@@ -9,7 +9,18 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class UpDateOldManController {
-    public static void upDateOldMan(OldMan oldMan)throws IOException{
+    private static UpDateOldManController singletonInstance=null;
+
+    static public UpDateOldManController getSingletonInstance(){
+        if(singletonInstance==null){
+            singletonInstance=new UpDateOldManController();
+        }
+        return singletonInstance;
+    }
+
+    private UpDateOldManController(){}
+
+    public void upDateOldMan(OldMan oldMan)throws IOException{
         ArrayList<OldMan> oldMEN = RWFileForOldMan.readFile();
 
         for (int i=0;i<oldMEN.size();i++) {

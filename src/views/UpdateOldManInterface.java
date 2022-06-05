@@ -107,7 +107,8 @@ public class UpdateOldManInterface {
                         return;
                     }
 
-                    UpDateOldManController.upDateOldMan(oldMan);
+                    UpDateOldManController upDateOldManController = UpDateOldManController.getSingletonInstance();
+                    upDateOldManController.upDateOldMan(oldMan);
 
                 } catch (IOException ex) {
                     ex.printStackTrace();

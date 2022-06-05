@@ -78,7 +78,7 @@ public class SetServiceObjectInterface {
             public void actionPerformed(ActionEvent e) {
                 String s = (String) stewardSelect.getSelectedItem();
                 String s2 = (String) oldManSelect.getSelectedItem();
-                SetServiceObjectController setServiceObjectController = new SetServiceObjectController();
+                SetServiceObjectController setServiceObjectController =SetServiceObjectController.getSingletonInstance();
                 setServiceObjectController.setServiceObjectController(s,s2,stewards,oldMEN);
 
                 JOptionPane.showMessageDialog(jf,"设置成功","",JOptionPane.INFORMATION_MESSAGE);

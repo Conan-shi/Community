@@ -7,6 +7,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class SetPassengerController {
+    private static SetPassengerController singletonInstance=null;
+
+    static public SetPassengerController getSingletonInstance(){
+        if(singletonInstance==null){
+            singletonInstance=new SetPassengerController();
+        }
+        return singletonInstance;
+    }
+
+    private SetPassengerController(){}
+
     public void setPassenger(int selectedRow,String oldManAccount)throws IOException {
         ArrayList<Bus> buses = RWFileForBus.readFile();
         Bus bus = buses.get(selectedRow);

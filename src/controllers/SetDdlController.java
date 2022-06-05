@@ -8,6 +8,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class SetDdlController {
+    private static SetDdlController singletonInstance=null;
+
+    static public SetDdlController getSingletonInstance(){
+        if(singletonInstance==null){
+            singletonInstance=new SetDdlController();
+        }
+        return singletonInstance;
+    }
+
+    private SetDdlController(){}
+
     public boolean setDdl(String ddl,int selectedRow)throws IOException {
         ArrayList<Bus> buses = RWFileForBus.readFile();
         Bus bus = buses.get(selectedRow);

@@ -134,7 +134,7 @@ public class UpdateAuthorityInterface {
                 //获取用户录入的数据
                 user.setAuthority(authoritySelect.getSelectedItem().toString());
                 users.set(selectedRow,user);
-                UpDateAuthorityController upDateAuthorityController = new UpDateAuthorityController();
+                UpDateAuthorityController upDateAuthorityController =UpDateAuthorityController.getSingletonInstance();
                 try {
                     upDateAuthorityController.upDateAuthority(user,users);
                 } catch (IOException ex) {

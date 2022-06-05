@@ -80,7 +80,7 @@ public class SetPassengerInterface {
                 String oldManAccount = st4.nextToken();
 
                 try {
-                    SetPassengerController setPassengerController = new SetPassengerController();
+                    SetPassengerController setPassengerController =SetPassengerController.getSingletonInstance();
                     setPassengerController.setPassenger(selectedRow,oldManAccount);
 
                     JOptionPane.showMessageDialog(jf, "添加乘客成功！", " ", JOptionPane.INFORMATION_MESSAGE);

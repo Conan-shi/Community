@@ -75,7 +75,7 @@ public class SetDDLInterface {
                     ArrayList<Bus> buses = RWFileForBus.readFile();
                     Bus bus = buses.get(selectedRow);
 
-                    SetDdlController setDdlController = new SetDdlController();
+                    SetDdlController setDdlController =SetDdlController.getSingletonInstance();
                     if(setDdlController.setDdl(ddl,selectedRow)){
                         JOptionPane.showMessageDialog(jf,"设置成功！"," ",JOptionPane.INFORMATION_MESSAGE);
                         new BusManagerInterface().init(bmName);

@@ -40,7 +40,7 @@ public class ConfirmPassengerInterface {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    DelPassengerController delPassengerController = new DelPassengerController();
+                    DelPassengerController delPassengerController = DelPassengerController.getSingletonInstance();
                     delPassengerController.delPassenger(selectedRow,selectedPassengerRow);
 
                     JOptionPane.showMessageDialog(jf, "删除成功", " ", JOptionPane.INFORMATION_MESSAGE);

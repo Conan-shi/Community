@@ -43,7 +43,7 @@ public class ConfirmUserInterface {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    DelUserController delUserController = new DelUserController();
+                    DelUserController delUserController = DelUserController.getSingletonInstance();
                     delUserController.delUser(selectedRow);
 
                     JOptionPane.showMessageDialog(jf, "删除成功", " ", JOptionPane.INFORMATION_MESSAGE);

@@ -11,6 +11,17 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class UpDateAuthorityController {
+    private static UpDateAuthorityController singletonInstance=null;
+
+    static public UpDateAuthorityController getSingletonInstance(){
+        if(singletonInstance==null){
+            singletonInstance=new UpDateAuthorityController();
+        }
+        return singletonInstance;
+    }
+
+    private UpDateAuthorityController(){}
+
     public void upDateAuthority(User user,ArrayList<User> users)throws IOException{
             if(user.getAuthority().equals("生活管家")){
                 Steward steward = new Steward(user);
