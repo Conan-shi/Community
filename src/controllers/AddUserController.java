@@ -11,6 +11,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class AddUserController {
+    private static AddUserController singletonInstance=null;
+
+    static public AddUserController getSingletonInstance(){
+        if(singletonInstance==null){
+            singletonInstance=new AddUserController();
+        }
+        return singletonInstance;
+    }
+
+    private AddUserController(){}
 
     public void addUser(User user)throws IOException {
         BufferedWriter bw=new BufferedWriter(new FileWriter("files\\usersMessage",true));

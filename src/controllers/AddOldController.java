@@ -12,6 +12,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class AddOldController {
+    private static AddOldController singletonInstance=null;
+
+    static public AddOldController getSingletonInstance(){
+        if(singletonInstance==null){
+            singletonInstance=new AddOldController();
+        }
+        return singletonInstance;
+    }
+
+    private AddOldController(){}
 
     public void addOld(OldMan oldMan)throws IOException{
         BufferedWriter bw=new BufferedWriter(new FileWriter("files\\oldManMessage",true));

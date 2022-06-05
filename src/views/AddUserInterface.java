@@ -154,7 +154,7 @@ public class AddUserInterface {
                     ex.printStackTrace();
                 }
 
-                AddUserController addUserController = new AddUserController();
+                AddUserController addUserController =AddUserController.getSingletonInstance();
                 try {
                     addUserController.addUser(user);
                 } catch (IOException ex) {

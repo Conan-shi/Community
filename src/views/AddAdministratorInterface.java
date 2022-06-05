@@ -141,7 +141,7 @@ public class AddAdministratorInterface {
                     ex.printStackTrace();
                 }
 
-                AddAdministratorController addAdministratorController = new AddAdministratorController();
+                AddAdministratorController addAdministratorController = AddAdministratorController.getSingletonInstance();
 
                 try {
                     addAdministratorController.addAdministrator(manager);
@@ -203,7 +203,7 @@ public class AddAdministratorInterface {
 
     }
 
-    public static void main(String[] args) throws Exception {
-        new AddAdministratorInterface().init();
-    }
+//    public static void main(String[] args) throws Exception {
+//        new AddAdministratorInterface().init();
+//    }
 }

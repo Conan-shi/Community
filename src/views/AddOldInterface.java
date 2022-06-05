@@ -129,7 +129,7 @@ public class AddOldInterface {
                     ex.printStackTrace();
                 }
 
-                AddOldController addOldController = new AddOldController();
+                AddOldController addOldController =AddOldController.getSingletonInstance();
                 try {
                     addOldController.addOld(oldMan);
                 } catch (IOException ex) {

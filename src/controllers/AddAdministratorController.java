@@ -10,6 +10,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class AddAdministratorController {
+    private static AddAdministratorController singletonInstance=null;
+
+    static public AddAdministratorController getSingletonInstance(){
+        if(singletonInstance==null){
+            singletonInstance=new AddAdministratorController();
+        }
+        return singletonInstance;
+    }
+
+    private AddAdministratorController(){}
 
     public void addAdministrator(User manager)throws IOException{
             BufferedWriter bw=new BufferedWriter(new FileWriter("files\\usersMessage",true));

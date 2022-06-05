@@ -12,6 +12,17 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class SetServiceObjectController {
+    private static SetServiceObjectController singletonInstance=null;
+
+    static public SetServiceObjectController getSingletonInstance(){
+        if(singletonInstance==null){
+            singletonInstance=new SetServiceObjectController();
+        }
+        return singletonInstance;
+    }
+
+    private SetServiceObjectController(){}
+
     public void setServiceObjectController(String s, String s2, ArrayList<Steward> stewards,ArrayList<OldMan> oldMEN){
         StringTokenizer st1 = new StringTokenizer(s, "(");
         String c = st1.nextToken();

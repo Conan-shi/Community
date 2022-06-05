@@ -222,7 +222,7 @@ public class AddBusInterface {
                         JOptionPane.showMessageDialog(jf,"输入的信息格式有误，请重新输入","错误提示",JOptionPane.ERROR_MESSAGE);
                         return;
                     }
-                    AddBusController addBusController = new AddBusController();
+                    AddBusController addBusController = AddBusController.getSingletonInstance();
                     addBusController.addBus(bus);
 
                     JOptionPane.showMessageDialog(jf,"添加成功！"," ",JOptionPane.INFORMATION_MESSAGE);
