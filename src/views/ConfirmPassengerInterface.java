@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//确认删除乘客界面
 public class ConfirmPassengerInterface {
     JFrame jf = new JFrame("警告");
 

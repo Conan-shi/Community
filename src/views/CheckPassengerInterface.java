@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+//查看乘客界面
 public class CheckPassengerInterface {
     JFrame jf = new JFrame("查看乘客信息");
 

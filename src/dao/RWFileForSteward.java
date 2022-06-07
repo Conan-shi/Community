@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//管理员文件的读写操作
 public class RWFileForSteward {
     public static ArrayList<Steward> readFile()throws IOException {
         BufferedReader br=new BufferedReader(new FileReader("files\\ServiceObjectMessage"));

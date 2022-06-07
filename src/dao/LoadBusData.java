@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 public class LoadBusData {
+    //加载班车数据
     public static Vector<Vector> loadBusesData() throws Exception{
         BufferedReader br = new BufferedReader(new FileReader("files\\busMessage"));
 

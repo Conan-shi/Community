@@ -2,6 +2,7 @@ package models;
 
 import java.util.ArrayList;
 
+//管理员类
 public class Steward extends User{
     private ArrayList<String> oldManAccounts;
 

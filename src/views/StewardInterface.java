@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+//生活管家界面
 public class StewardInterface {
     JFrame jf = new JFrame();
 

@@ -19,6 +19,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//添加班车界面
 public class AddBusInterface {
     JFrame jf = new JFrame("新建班车");
 

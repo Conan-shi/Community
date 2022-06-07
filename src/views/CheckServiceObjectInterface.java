@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Vector;
 
+//查看服务对象界面
 public class CheckServiceObjectInterface {
     JFrame jf = new JFrame("查看服务对象");
 

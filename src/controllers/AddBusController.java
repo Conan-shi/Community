@@ -5,6 +5,7 @@ import models.Bus;
 
 import java.io.IOException;
 
+//添加班车功能的控制器
 public class AddBusController {
     private static AddBusController singletonInstance=null;
 

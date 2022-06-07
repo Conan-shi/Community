@@ -1,5 +1,6 @@
 package models;
 
+//老人类
 public class OldMan {
     private String stewardAccount;
 

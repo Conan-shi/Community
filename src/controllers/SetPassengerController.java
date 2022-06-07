@@ -6,6 +6,7 @@ import models.Bus;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//添加乘客功能的控制器
 public class SetPassengerController {
     private static SetPassengerController singletonInstance=null;
 

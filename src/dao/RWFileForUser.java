@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import java.io.*;
 import java.util.ArrayList;
 
+//用户文件的读写操作
 public class RWFileForUser {
     public static ArrayList<User> readFile()throws IOException{
         BufferedReader br = new BufferedReader(new FileReader("files\\usersMessage"));

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class Check {
+    //检查用户信息格式是否正确
     public static boolean checkForm(User user) throws IOException {
         if (user.getAccount() == null || user.getPassword() == null || user.getName() == null || user.getAuthority() == null) {
             return false;
@@ -39,7 +40,7 @@ public class Check {
 
     public static boolean ifAccountIsUsed(User user) throws IOException {
         boolean flag = true;
-        ArrayList<User> users = ReadFile.readFile("user");
+        ArrayList<User> users = RWFileForUser.readFile();
         if (users.size() == 0) {
             return true;
         } else {
@@ -334,20 +335,18 @@ public class Check {
     }
 
 
-//    public static void main(String[] args) throws IOException{
-////        User user=new User();
-////        user.setName("sssss");
-////        user.setGender("男");
-////        user.setAccount("31013922");
-////        user.setPassword("$Tx521120");
-////        user.setTelephoneNumber("1111111122");
-////        user.setBirthDate("1111-11-11");
-////        user.setAuthority("管理员");
-//
-//        Bus bus = new Bus();
-//        bus.setStartTime("12:00");
-//
-//        System.out.println(Check.checkBusForm(bus));
-//    }
+    public static void main(String[] args) throws IOException{
+        User user=new User();
+        user.setGender("男");
+        user.setName("lll");
+        user.setAccount("31013922");
+        user.setPassword("$Tx521120");
+        user.setTelephoneNumber("1111111122");
+        user.setBirthDate("1111-11-11");
+        user.setAuthority("管理员");
+
+
+        System.out.println(Check.checkForm(user));
+    }
 
 }

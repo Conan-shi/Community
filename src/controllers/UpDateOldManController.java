@@ -8,6 +8,7 @@ import models.Steward;
 import java.io.*;
 import java.util.ArrayList;
 
+//更改老人信息功能的控制器
 public class UpDateOldManController {
     private static UpDateOldManController singletonInstance=null;
 

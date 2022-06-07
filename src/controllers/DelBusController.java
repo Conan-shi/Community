@@ -6,6 +6,7 @@ import models.Bus;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//删除班车功能的控制器
 public class DelBusController {
     private static DelBusController singletonInstance=null;
 

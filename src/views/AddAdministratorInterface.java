@@ -1,12 +1,9 @@
 package views;
 
 import controllers.AddAdministratorController;
-import dao.RWFileForUser;
 import models.User;
-import com.google.gson.Gson;
 import component.BackGroundPanel;
 import utils.Check;
-import utils.ReadFile;
 import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
@@ -14,8 +11,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.util.ArrayList;
 
+//添加管理员界面
 public class AddAdministratorInterface {
     JFrame jf=new JFrame("新增用户");
 

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+//设置服务对象功能的控制器
 public class SetServiceObjectController {
     private static SetServiceObjectController singletonInstance=null;
 

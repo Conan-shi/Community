@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+//后勤管理界面
 public class BusManagerInterface {
     JFrame jf = new JFrame();
 

@@ -7,6 +7,7 @@ import utils.Check;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//设置截止时间功能的控制器
 public class SetDdlController {
     private static SetDdlController singletonInstance=null;
 

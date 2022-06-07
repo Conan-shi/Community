@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//设置截止时间界面
 public class SetDDLInterface {
     JFrame jf = new JFrame("设置截止时间");
 

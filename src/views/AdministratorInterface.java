@@ -17,6 +17,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Vector;
 
+//管理员界面
 public class AdministratorInterface {
     JFrame jf = new JFrame();
 
@@ -249,7 +250,8 @@ public class AdministratorInterface {
                     if(selectedRow==-1){
                         JOptionPane.showMessageDialog(jf, "请选择用户", "错误", JOptionPane.ERROR_MESSAGE);
                     }else {
-                        User user=ReadFile.getUser(selectedRow);
+                        ArrayList<User> users = RWFileForUser.readFile();
+                        User user = users.get(selectedRow);
                         if(!user.getAuthority().equals("生活管家")){
                             JOptionPane.showMessageDialog(jf, "请选择生活管家", "错误", JOptionPane.ERROR_MESSAGE);
                         }else {

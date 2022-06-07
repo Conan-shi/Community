@@ -7,6 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class RWFileForBus {
+    //班车文件的读写操作
     public static ArrayList<Bus> readFile() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader("files\\busMessage"));
 

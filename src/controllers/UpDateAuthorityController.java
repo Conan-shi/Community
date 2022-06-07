@@ -10,6 +10,7 @@ import models.User;
 import java.io.*;
 import java.util.ArrayList;
 
+//更新管理权限功能的控制器
 public class UpDateAuthorityController {
     private static UpDateAuthorityController singletonInstance=null;
 

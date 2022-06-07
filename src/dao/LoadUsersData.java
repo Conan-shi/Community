@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 public class LoadUsersData {
+    //加载用户数据
     public static Vector<Vector> loadUsersData() throws Exception{
         BufferedReader br = new BufferedReader(new FileReader("files\\usersMessage"));
 

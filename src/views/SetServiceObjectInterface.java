@@ -17,6 +17,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+//设置服务对象界面
 public class SetServiceObjectInterface {
     JFrame jf = new JFrame("设置服务对象");
 

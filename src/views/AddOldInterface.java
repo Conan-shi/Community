@@ -2,22 +2,18 @@ package views;
 
 import controllers.AddOldController;
 import models.OldMan;
-import com.google.gson.Gson;
 import component.BackGroundPanel;
 import utils.Check;
-import utils.ReadFile;
 import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
+//添加老人界面
 public class AddOldInterface {
     JFrame jf = new JFrame("添加老人");
 

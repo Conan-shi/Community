@@ -1,5 +1,6 @@
 package models;
 
+//用户类
 public class User{
     private String id;
 

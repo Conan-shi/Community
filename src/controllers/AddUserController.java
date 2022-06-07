@@ -1,15 +1,16 @@
 package controllers;
 
 import com.google.gson.Gson;
+import dao.RWFileForUser;
 import models.Steward;
 import models.User;
-import utils.ReadFile;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//添加用户功能的控制器
 public class AddUserController {
     private static AddUserController singletonInstance=null;
 
@@ -25,7 +26,7 @@ public class AddUserController {
     public void addUser(User user)throws IOException {
         BufferedWriter bw=new BufferedWriter(new FileWriter("files\\usersMessage",true));
         Gson gson=new Gson();
-        ArrayList<User> users = ReadFile.readFile("user");
+        ArrayList<User> users = RWFileForUser.readFile();
         if(users.size()==0){
             user.setId("1");
         }else {

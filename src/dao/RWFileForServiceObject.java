@@ -6,8 +6,8 @@ import models.Steward;
 import java.io.*;
 import java.util.ArrayList;
 
+//服务对象文件的读写操作
 public class RWFileForServiceObject {
-
     public void upDateFile(Steward steward) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter("files\\ServiceObjectMessage", true));
         Gson gson = new Gson();

@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 
+//确认删除用户界面
 public class ConfirmUserInterface {
     JFrame jf = new JFrame("警告");
 

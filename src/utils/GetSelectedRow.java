@@ -6,6 +6,7 @@ import models.User;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//返回指定账号用户的索引
 public class GetSelectedRow {
     public static int getSelectedRow(String account)throws IOException {
         ArrayList<User> users = RWFileForUser.readFile();

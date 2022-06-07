@@ -1,12 +1,10 @@
 package views;
 
 import controllers.UpDateOldManController;
+import dao.RWFileForOldMan;
 import models.OldMan;
-import models.Steward;
-import com.google.gson.Gson;
 import component.BackGroundPanel;
 import utils.Check;
-import utils.ReadFile;
 import utils.ScreenUtils;
 
 import javax.imageio.ImageIO;
@@ -14,8 +12,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.util.ArrayList;
 
+//顾客信息修改界面
 public class UpdateOldManInterface {
     JFrame jf = new JFrame("顾客信息修改");
 
@@ -25,7 +23,7 @@ public class UpdateOldManInterface {
 
     //组装视图
     public void init(String sName,int selectedRow, String stewardAccount) throws Exception {
-        OldMan oldMan = ReadFile.getOldMan(stewardAccount, selectedRow);
+        OldMan oldMan = RWFileForOldMan.getOldMan(stewardAccount, selectedRow);
 
         //设置窗口属性
         jf.setBounds((ScreenUtils.getScreenWidth() - WIDTH) / 2, (ScreenUtils.getScreenHeight() - HEIGHT) / 2, WIDTH, HEIGHT);

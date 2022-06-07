@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//登录检验
 public class CheckIn {
     public static boolean checkIn(String account, String password) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader("files\\usersMessage"));

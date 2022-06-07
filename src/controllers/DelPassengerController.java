@@ -6,6 +6,7 @@ import models.Bus;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//删除乘客功能的控制器
 public class DelPassengerController {
     private static DelPassengerController singletonInstance=null;
 

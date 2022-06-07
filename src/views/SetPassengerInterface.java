@@ -16,6 +16,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+//添加乘客
 public class SetPassengerInterface {
     JFrame jf = new JFrame("添加乘客");
 

@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 
+//更改权限界面
 public class UpdateAuthorityInterface {
     JFrame jf = new JFrame("修改权限");
 

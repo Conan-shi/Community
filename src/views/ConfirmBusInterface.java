@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 
+//确认删除班车界面
 public class ConfirmBusInterface {
     JFrame jf = new JFrame("警告");
 

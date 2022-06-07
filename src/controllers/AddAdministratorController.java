@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//添加管理员功能的控制器
 public class AddAdministratorController {
     private static AddAdministratorController singletonInstance=null;
 

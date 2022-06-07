@@ -13,7 +13,7 @@ import views.ConfirmUserInterface;
 import java.io.*;
 import java.util.ArrayList;
 
-
+//删除用户功能的控制器
 public class DelUserController {
     private static DelUserController singletonInstance=null;
 

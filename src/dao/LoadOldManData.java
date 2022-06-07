@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 public class LoadOldManData {
+    //加载老人数据
     public static Vector<Vector> loadOldManData(int selectedRow) throws Exception {
         BufferedReader br = new BufferedReader(new FileReader("files\\usersMessage"));
 

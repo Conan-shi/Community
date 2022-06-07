@@ -3,6 +3,7 @@ package utils;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+//删除指定用户
 public class DelUser {
     public static ArrayList delUser(ArrayList array,int n){
         LinkedList<Object> objects = new LinkedList<>();

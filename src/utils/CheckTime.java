@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.StringTokenizer;
 
+//预约时间检验
 public class CheckTime {
 
     public static boolean checkTime(Bus bus) {

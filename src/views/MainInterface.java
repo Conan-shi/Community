@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
+//登录界面
 public class MainInterface {
     JFrame jf=new JFrame("活力长者社区");
 

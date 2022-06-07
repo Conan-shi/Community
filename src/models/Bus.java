@@ -2,6 +2,7 @@ package models;
 
 import java.util.ArrayList;
 
+//班车类
 public class Bus {
     private ArrayList<String> passengers;
 
